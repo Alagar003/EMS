@@ -1,3 +1,4 @@
+
 package com.example.demo.model;
 
 import jakarta.persistence.*;
@@ -23,9 +24,11 @@ public class Admin {
     @Column(nullable = false)
     private String password;
 
-    public Admin(String email, String username, String password) {
-        this.email = email;
-        this.username = username;
-        this.password = password;
-    }
+    @OneToOne(mappedBy = "admin")
+    private ForgotPassword forgotPassword;
+
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private Role role = Role.ADMIN;
 }
