@@ -22,4 +22,6 @@ public interface ForgotPasswordRepository extends JpaRepository<ForgotPassword, 
 //    Optional<ForgotPassword> findByOtpAndAdmin(Integer otp, Admin admin);
 //    Optional<ForgotPassword> findByOtpAndEmployee(Integer otp, Employee employee);
 
+
+
 }

@@ -39,15 +39,31 @@ const Login = () => {
             });
 
             const data = await response.json();
+            // if (response.ok) {
+            //     alert("Login Successful");
+            //     localStorage.setItem("token", data.token);
+            //     setInput("");
+            //     setPassword("");
+            //     // na(`/${role}-dashboard`);  // Redirect based on role
+
             if (response.ok) {
                 alert("Login Successful");
                 localStorage.setItem("token", data.token);
+
+                console.log(localStorage.getItem("token"));
+
                 setInput("");
                 setPassword("");
-                // na(`/${role}-dashboard`);  // Redirect based on role
+
+                if (role === "admin") {
+                    navigate("/add-employee"); // 👈 Admin redirected to Add Employee form
+                } else {
+                    navigate("/"); // 👈 Employee redirected to dashboard
+                }
             } else {
                 alert(data.message || "An error occurred. Please check your credentials and try again.");
             }
+
         } catch (error) {
             console.error("Login Error:", error);
             alert("An unexpected error occurred. Please try again later.");
